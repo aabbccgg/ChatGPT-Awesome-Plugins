@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Paid: Tavily(Search Engine, Extract Urls)",
+    "title": "Paid: Tavily (Search Engine, Extract Online Data)",
     "version": "1.0.1",
     "description": "API for Tavily search and extract endpoints."
   },
