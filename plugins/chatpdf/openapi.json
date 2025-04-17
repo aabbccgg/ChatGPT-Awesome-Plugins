@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "description": "A GPT that allows the user to read data from a link.",
-    "title": "Chat PDF GPT",
+    "title": "Free: chatpdf(Read PDF Url) ",
     "version": "v1"
   },
   "servers": [
