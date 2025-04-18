@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "description": "Fetches the text content from a personal website.",
-    "title": "Free: Jina (Read Url)",
+    "title": "[Free] Jina - Extract Url Data",
     "version": "v1.0.0"
   },
   "servers": [
