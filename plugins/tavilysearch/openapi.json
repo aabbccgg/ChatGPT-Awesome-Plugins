@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "[Paid] Tavily - Search Engine, Extract Url Data",
+    "title": "[Paid] Search, Extract Urls Data | Tavily",
     "version": "1.0.1",
     "description": "API for Tavily search and extract endpoints."
   },
@@ -15,7 +15,7 @@
     "/search": {
       "post": {
         "summary": "Tavily Search",
-        "description": "Execute a search query using Tavily Search.",
+        "description": "Execute a search query using Tavily Search, note Tavily search is barely a database search not a search engine.",
         "operationId": "tavilySearch",
         "requestBody": {
           "required": true,

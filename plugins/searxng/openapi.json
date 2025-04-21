@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "[Free] SearXNG - Search Engine",
+    "title": "[Free] Search Engine | SearXNG",
     "version": "1.0.1"
   },
   "servers": [
@@ -13,7 +13,7 @@
   "paths": {
     "/search": {
       "get": {
-        "summary": "Perform a search query (GET)",
+        "summary": "Using SearXNG search engine to perform a search query (GET)",
         "operationId": "SearXNGSearch",
         "parameters": [
           {
