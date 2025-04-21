@@ -15,7 +15,7 @@
     "/search": {
       "post": {
         "summary": "Tavily Search",
-        "description": "Execute a search query using Tavily Search, note Tavily search is barely a database search not a search engine.",
+        "description": "Execute a search query using Tavily Search, Tavily search is database search not realtime.",
         "operationId": "tavilySearch",
         "requestBody": {
           "required": true,

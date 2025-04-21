@@ -13,7 +13,7 @@
   "paths": {
     "/search": {
       "get": {
-        "summary": "Using SearXNG search engine to perform a search query (GET)",
+        "summary": "Using SearXNG search engine to perform a search query, you'd better search thing using this function first",
         "operationId": "SearXNGSearch",
         "parameters": [
           {
