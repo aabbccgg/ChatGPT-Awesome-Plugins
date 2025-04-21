@@ -1,7 +1,7 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "[Paid] Dall-E 3 - AI Draw",
+    "title": "[Paid] Dall-E 3 - AI Drawer",
     "version": "1.0.0"
   },
   "servers": [
