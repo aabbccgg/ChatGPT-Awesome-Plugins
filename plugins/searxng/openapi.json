@@ -49,9 +49,10 @@
             {
               "name": "format",
               "required": true,
+              "in": "query",
               "schema": {
                 "type": "string",
-                "enum": ["json"]
+                "default": "json"
               }
             }
           ],
