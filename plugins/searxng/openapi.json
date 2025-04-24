@@ -7,7 +7,7 @@
     },
     "servers": [
       {
-        "url": "https://baresearch.org",
+        "url": "https://etsi.me",
         "description": "SearXNG instance"
       }
     ],
@@ -41,7 +41,6 @@
               "name": "time_range",
               "in": "query",
               "description": "Time range filter for search results.",
-              "required": false,
               "schema": {
                 "type": "string",
                 "enum": ["day", "month", "year"]
@@ -49,6 +48,7 @@
             },
             {
               "name": "format",
+              "required": true,
               "in": "query",
               "description": "Response format.",
               "schema": {
