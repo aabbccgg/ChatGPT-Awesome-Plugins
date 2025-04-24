@@ -26,8 +26,7 @@
                   "properties": {
                     "query": {
                       "type": "string",
-                      "description": "The search query to execute.",
-                      "example": "who is Leo Messi?"
+                      "description": "The search query to execute."
                     },
                     "topic": {
                       "type": "string",
@@ -41,18 +40,24 @@
                       "default": "basic",
                       "description": "Search depth. 'advanced' retrieves more relevant sources (2 credits), while 'basic' provides general results (1 credit)."
                     },
+                    "chunks_per_source": {
+                      "type": "integer",
+                      "default": 1,
+                      "minimum": 1,
+                      "maximum": 3,
+                      "description": "The number of content chunks to retrieve from each source. Each chunk's length is maximum 500 characters. Available only when search_depth is advanced."
+                    },
                     "max_results": {
                       "type": "integer",
                       "default": 5,
-                      "minimum": 0,
+                      "minimum": 1,
                       "maximum": 20,
                       "description": "Maximum number of search results to return.",
                       "example": 5
                     },
                     "time_range": {
                       "type": "string",
-                      "enum": ["day", "week", "month", "year", "d", "w", "m", "y"],
-                      "nullable": true,
+                      "enum": ["d", "w", "m", "y"],
                       "description": "Time range to filter results from current date."
                     },
                     "days": {
@@ -62,9 +67,9 @@
                       "description": "Number of days back to include. Only used when topic is 'news'."
                     },
                     "include_answer": {
-                      "type": ["boolean", "string"],
+                      "type": "boolean",
                       "default": false,
-                      "description": "Include an AI-generated answer to the query. Use 'basic' or true for quick answers, 'advanced' for detailed answers."
+                      "description": "Include an AI-generated answer to the query. Use true for quick answers, 'advanced' for detailed answers."
                     },
                     "include_raw_content": {
                       "type": "boolean",
@@ -188,20 +193,10 @@
                   "type": "object",
                   "properties": {
                     "urls": {
-                      "oneOf": [
-                        {
-                          "type": "string",
-                          "description": "Single URL to extract content from.",
-                          "example": "https://en.wikipedia.org/wiki/Artificial_intelligence"
-                        },
-                        {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          },
-                          "description": "Multiple URLs to extract content from."
-                        }
-                      ],
+                      "type": "array",
+                      "items": {
+                      "type": "string"
+                      },                        
                       "description": "URL(s) to extract content from."
                     },
                     "include_images": {
