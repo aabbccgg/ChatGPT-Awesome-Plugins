@@ -2,7 +2,7 @@
     "openapi": "3.1.0",
     "info": {
       "title": "[Paid] Search, Extract Urls Data | Tavily",
-      "version": "2.0.0",
+      "version": "2.0.1",
       "description": "The search engine designed specifically for AI agents, providing LLM-optimized web search and powerful content extraction capabilities."
     },
     "servers": [

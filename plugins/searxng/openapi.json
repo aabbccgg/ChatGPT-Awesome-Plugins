@@ -3,7 +3,7 @@
     "info": {
       "title": "[Free] Search Engine | SearXNG",
       "description": "Metasearch engine that aggregates results from multiple search engine.",
-      "version": "2.0.0"
+      "version": "2.0.1"
     },
     "servers": [
       {

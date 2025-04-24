@@ -3,7 +3,7 @@
     "info": {
       "title": "[Free] Extract Url Data | Jina",
       "description": "Extracts and vectorizes web content into LLM-friendly format using Jina's reader API. Supports various content extraction options including targeting specific elements, removing unwanted elements.",
-      "version": "2.0.0"
+      "version": "2.0.1"
     },
     "servers": [
       {

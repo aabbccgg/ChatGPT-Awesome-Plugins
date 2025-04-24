@@ -3,7 +3,7 @@
     "info": {
       "title": "[Paid] AI Drawer | Dall-E 2/3",
       "description": "Generate images using OpenAI's image generation models including DALL-E 2, DALL-E 3",
-      "version": "2.0.0"
+      "version": "2.0.1"
     },
     "servers": [
       {
