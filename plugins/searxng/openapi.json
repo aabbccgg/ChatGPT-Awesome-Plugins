@@ -40,7 +40,7 @@
             {
               "name": "time_range",
               "in": "query",
-              "description": "Time range filter for search results.",
+              "description": "Time range filter for search results(only use this when you want to limit the time range).",
               "schema": {
                 "type": "string",
                 "enum": ["day", "month", "year"]
@@ -49,12 +49,9 @@
             {
               "name": "format",
               "required": true,
-              "in": "query",
-              "description": "Response format.",
               "schema": {
                 "type": "string",
-                "enum": ["json"],
-                "default": "json"
+                "enum": ["json"]
               }
             }
           ],
