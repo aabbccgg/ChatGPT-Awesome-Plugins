@@ -1,63 +1,123 @@
 {
-  "openapi": "3.0.0",
-  "info": {
-    "title": "[Free] Search Engine | SearXNG",
-    "version": "1.0.1"
-  },
-  "servers": [
-    {
-      "url": "https://baresearch.org",
-      "description": "SearXNG instance URL."
-    }
-  ],
-  "paths": {
-    "/search": {
-      "get": {
-        "summary": "Using SearXNG search engine to perform a search query, you'd better search thing using this function first",
-        "operationId": "SearXNGSearch",
-        "parameters": [
-          {
-            "name": "q",
-            "in": "query",
-            "description": "The search query string.",
-            "required": true,
-            "schema": {
-              "type": "string"
+    "openapi": "3.1.0",
+    "info": {
+      "title": "[Free] Search Engine | SearXNG",
+      "description": "Metasearch engine that aggregates results from multiple search engine.",
+      "version": "2.0.0"
+    },
+    "servers": [
+      {
+        "url": "https://baresearch.org",
+        "description": "SearXNG instance"
+      }
+    ],
+    "paths": {
+      "/search": {
+        "get": {
+          "summary": "Search across multiple engines",
+          "description": "Performs a search query across configured search engines and returns aggregated results.",
+          "operationId": "search-SearXNG",
+          "parameters": [
+            {
+              "name": "q",
+              "in": "query",
+              "description": "Search query string. Supports syntax specific to underlying search engines (e.g., 'site:github.com SearXNG').",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "pageno",
+              "in": "query",
+              "description": "Page number of search results.",
+              "schema": {
+                "type": "integer",
+                "default": 1,
+                "minimum": 1
+              }
+            },
+            {
+              "name": "time_range",
+              "in": "query",
+              "description": "Time range filter for search results.",
+              "required": false,
+              "schema": {
+                "type": "string",
+                "enum": ["day", "month", "year"]
+              }
+            },
+            {
+              "name": "format",
+              "in": "query",
+              "description": "Response format.",
+              "schema": {
+                "type": "string",
+                "enum": ["json"],
+                "default": "json"
+              }
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Search results retrieved successfully.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "results": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "title": { "type": "string" },
-                          "link": { "type": "string" },
-                          "snippet": { "type": "string" }
-                        },
-                        "required": ["title", "link"]
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful search operation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "query": {
+                        "type": "string",
+                        "description": "The search query that was executed"
+                      },
+                      "results": {
+                        "type": "array",
+                        "description": "List of search results",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "title": { 
+                              "type": "string",
+                              "description": "Title of the search result"
+                            },
+                            "url": { 
+                              "type": "string",
+                              "description": "URL of the search result"
+                            },
+                            "content": { 
+                              "type": "string",
+                              "description": "Brief content or description of the result"
+                            },
+                            "engine": {
+                              "type": "string",
+                              "description": "Source search engine name"
+                            },
+                            "score": {
+                              "type": "number",
+                              "description": "Relevance score of the result",
+                              "format": "float"
+                            }
+                          },
+                          "required": ["title", "url"]
+                        }
+                      },
+                      "total": { 
+                        "type": "integer",
+                        "description": "Total number of results found"
+                      },
+                      "total_pages": {
+                        "type": "integer",
+                        "description": "Total number of available result pages"
                       }
                     },
-                    "total": { "type": "integer" }
-                  },
-                  "required": ["results"]
+                    "required": ["results", "query"]
+                  }
                 }
               }
             }
-          },
-          "400": {
-            "description": "Invalid request parameters."
           }
         }
       }
     }
   }
-}
+  

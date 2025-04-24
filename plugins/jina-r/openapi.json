@@ -1,46 +1,156 @@
 {
-  "openapi": "3.1.0",
-  "info": {
-    "description": "Fetches the text content from a personal website.",
-    "title": "[Free] Extract Url Data | Jina",
-    "version": "v1.0.0"
-  },
-  "servers": [
-    {
-      "url": "https://r.jina.ai"
-    }
-  ],
-  "paths": {
-    "/{target_url}": {
-      "get": {
-        "description": "Retrieves the contents of a specified URL and converts it to LLM-friendly Markdown format.",
-        "operationId": "ReadUrlContent",
-        "parameters": [
-          {
-            "name": "target_url",
-            "in": "path",
-            "required": true,
-            "description": "The URL of the content to be read.",
-            "schema": {
-              "type": "string"
+    "openapi": "3.1.0",
+    "info": {
+      "title": "[Free] Extract Url Data | Jina",
+      "description": "Extracts and vectorizes web content into LLM-friendly format using Jina's reader API. Supports various content extraction options including targeting specific elements, removing unwanted elements.",
+      "version": "2.0.0"
+    },
+    "servers": [
+      {
+        "url": "https://r.jina.ai"
+      }
+    ],
+    "paths": {
+      "/{url}": {
+        "post": {
+          "operationId": "extract-Jina_r",
+          "summary": "Extract content from URL",
+          "description": "Retrieves and parses web content into LLM-friendly format with optional filtering",
+          "parameters": [
+            {
+              "name": "url",
+              "in": "path",
+              "required": true,
+              "description": "URL to extract content from",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "X-Target-Selector",
+              "in": "header",
+              "required": false,
+              "description": "CSS selectors to focus on specific elements",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "X-Wait-For-Selector",
+              "in": "header",
+              "required": false,
+              "description": "CSS selectors to wait for before extraction",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "X-Remove-Selector",
+              "in": "header",
+              "required": false,
+              "description": "CSS selectors to exclude from extraction",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "X-With-Links-Summary",
+              "in": "header",
+              "description": "Include links summary in response",
+              "schema": {
+                "type": "boolean",
+                "default": true
+              }
+            },
+            {
+              "name": "X-With-Images-Summary",
+              "in": "header",
+              "description": "Include images summary in response",
+              "schema": {
+                "type": "boolean",
+                "default": true
+              }
+            },
+            {
+              "name": "X-No-Cache",
+              "in": "header",
+              "required": false,
+              "description": "Bypass cache for fresh content",
+              "schema": {
+                "type": "boolean",
+                "default": false
+              }
+            },
+            {
+              "name": "Accept",
+              "in": "header",
+              "description": "Response format",
+              "schema": {
+                "type": "string",
+                "default": "application/json",
+                "enum": ["application/json"]
+              }
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "string",
-                  "description": "The content of the URL converted to LLM-friendly Markdown format."
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful extraction",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "integer"
+                      },
+                      "status": {
+                        "type": "integer"
+                      },
+                      "data": {
+                        "type": "object",
+                        "properties": {
+                          "images": {
+                            "type": "object"
+                          },
+                          "links": {
+                            "type": "object"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string"
+                          },
+                          "content": {
+                            "type": "string"
+                          },
+                          "warning": {
+                            "type": "string"
+                          },
+                          "usage": {
+                            "type": "object"
+                          }
+                        }
+                      },
+                      "meta": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                },
+                "text/plain": {
+                  "schema": {
+                    "type": "string"
+                  }
                 }
               }
             }
           }
-        },
-        "summary": "Read the contents of a URL and convert to Markdown"
+        }
       }
     }
   }
-}
+  
